@@ -1,4 +1,5 @@
-// number of bits
+#ifndef _STD_TYPES_H
+#define _STD_TYPES_H
  
 typedef unsigned char u8 ;
 typedef signed char s8 ;
@@ -16,3 +17,4 @@ typedef float f32 ;
 typedef double f64 ;
 typedef long double f128 ;
 
+#endif //_STD_TYPES_H

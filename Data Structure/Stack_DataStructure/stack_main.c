@@ -1,66 +1,55 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include "STD_TYPES.h"
 #include "stack.h"
 
-/****************************IMPORTANT*********************************/
-/*you need to enter MaxStack & StackEntry*/
 
+stack_ds_t stack1;
+stack_ds_t stack2;
+
+//void Stack_test(stack_ds_t * Copy_Stack,u32 Copy_Data);
 
 void main()
 {
-	u8 q;
-	Stack s;
-	StackEntry e;
-	Initialize_Stack(&s);
-	u8 shoose;
-	do {
-	
-	printf("to push          press 1 :\n");
-	printf("to pop           press 2 :\n");
-	printf("to get top       press 3 :\n");
-	printf("to get size      press 4 :\n");
-	printf("to clear stack   press 5 :\n");
-	printf("to Display stack press 6 :\n");
-	scanf("%d",&shoose);
-	
-	switch(shoose)
-	{
-		case 1 :
-			if(!StackFull(&s))
-			{
-				printf("enter the data:");
-				scanf("%d",&e);
-				PUSH(e,&s);
-			}
-			break;
-		case 2 :
-			if(!EMPTY(&s))
-			{
-				POP(&e,&s);
-				printf("%d\n",e);
-			}
-			break;
-		case 3 :
-			GetTop(&e,&s);
-			printf("the top element is %d\n",e);
-			break;
-		case 4 :
-			printf("the size is %d\n",GetSize(&s));
-			break;
-		case 5 :
-			ClearStack(&s);
-			break;
-		case 6 :
-			Display(&s);
-			break;
-		default:
-			printf("wrong answer\n");
-			break;
-	}
-		printf("\n\n\nto exit enter 0 press 1 to contiue:");
-		scanf("%d",&q);
-	}while(q!=0);
+	u32 x,y;
+	//Stack_test(&stack1,55);
+	return_status_t ret =R_NOK;
+
+	ret = Stack_Init(&stack1);
+    if (ret == R_NOK)
+    {
+        printf("error stack1 init\n");
+    }
+	else{
+		ret = Stack_Push(&stack1,11);
+		ret = Stack_Push(&stack1,22);
+		ret = Stack_Push(&stack1,33);
+		ret = Stack_Push(&stack1,44);
+		ret = Stack_Push(&stack1,55);
+		Stack_Pop(&stack1,&x);
+		Stack_Pop(&stack1,&x);
+		Stack_Pop(&stack1,&x);
+		Stack_Pop(&stack1,&x);
+		Stack_Pop(&stack1,&x);
+		//Stack_Size(&stack1,&y);
+		Stack_Display(&stack1);
+		//Stack_Top(&stack1,&y);
+		//printf("%d",y);
+		//ret = Stack_Push(&stack1,66);
+		//ret = Stack_Push(&stack1,77);
+
+		}
 	
 	
+	
+    ret = Stack_Init(&stack2);
+    if (ret == R_NOK)
+    {
+        printf("error stack2 init\n");
+    }
 }
+/*
+void Stack_test(stack_ds_t * Copy_Stack,u32 Copy_Data)
+{
+		Copy_Stack->SP++;						  //1-increment SP
+		printf("sp=(%d)\n",Copy_Stack->SP);
+}
+*/
